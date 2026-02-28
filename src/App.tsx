@@ -4,7 +4,7 @@ import ContactSection from './components/ContactSection';
 import SignatureSection from './components/SignatureSection';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Play, X, ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react';
+import { ArrowRight, X, ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react';
 
 // ── Gallery video data — all 6 real films ───────────────────────────
 const galleryVideos = [
