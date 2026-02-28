@@ -16,7 +16,7 @@ const Navbar = () => {
         <>
             {/* ── Top bar: Logo + hamburger ── */}
             <div className={`fixed top-0 left-0 w-full z-[200] flex items-center justify-between px-6 py-5 transition-all duration-500
-                ${isOpen ? 'bg-[#0c0504]' : 'bg-transparent'}
+                bg-transparent
                 ${!scrolled && !isOpen ? 'md:opacity-0 md:-translate-y-4' : 'md:opacity-100 md:translate-y-0'}
             `}>
                 {/* Logo */}
@@ -64,7 +64,7 @@ const Navbar = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2, ease: 'easeOut' }}
-                        className="fixed top-[72px] left-0 w-full z-[190] md:hidden bg-[#0c0504]/95 backdrop-blur-sm border-b border-white/5 shadow-2xl"
+                        className="fixed top-[72px] left-0 w-full z-[190] md:hidden bg-transparent"
                     >
                         {/* Links */}
                         <div className="flex flex-col px-8 pt-6 pb-8">
