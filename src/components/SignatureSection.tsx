@@ -3,7 +3,7 @@ import { useRef } from 'react';
 
 export default function SignatureSection() {
     const sectionRef = useRef(null);
-    const { scrollYProgress } = useScroll({
+    useScroll({
         target: sectionRef,
         offset: ["start end", "end start"]
     });
@@ -31,7 +31,7 @@ export default function SignatureSection() {
                         <span className="inline-block border border-white/40 rounded-full px-12 py-3 backdrop-blur-md bg-black/20 text-white font-sans font-bold tracking-[0.4em] uppercase text-xs mb-8 shadow-2xl">
                             About Us
                         </span>
-                        <h2 className="text-5xl md:text-8xl font-script text-white leading-[1.1] tracking-tight [text-shadow:2px_2px_15px_rgba(0,0,0,0.8)]">
+                        <h2 className="text-4xl sm:text-5xl md:text-8xl font-script text-white leading-[1.1] tracking-tight [text-shadow:2px_2px_15px_rgba(0,0,0,0.8)]">
                             Timeless <br />
                             <span className="italic font-light text-gold">Cinematic Masterpieces</span>
                         </h2>
@@ -57,6 +57,6 @@ export default function SignatureSection() {
                     </p>
                 </motion.div>
             </div>
-        </section>
+        </section >
     );
 }

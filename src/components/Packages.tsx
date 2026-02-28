@@ -128,17 +128,17 @@ export default function Packages() {
                             </div>
                             <p className={`text-xs uppercase tracking-wider font-medium mb-6 ${pkg.highlight ? 'text-terracotta' : 'text-gold'}`}>{pkg.subtitle}</p>
 
-                            <p className={`text-sm mb-8 leading-relaxed ${pkg.highlight ? 'text-white/70' : 'text-earth-800/70'}`}>
+                            <p className={`text-sm mb-8 leading-relaxed ${pkg.highlight ? 'text-white/70' : 'text-white/60'}`}>
                                 {pkg.description}
                             </p>
 
-                            <div className={`h-[1px] w-full mb-8 ${pkg.highlight ? 'bg-white/10' : 'bg-earth-100'}`} />
+                            <div className={`h-[1px] w-full mb-8 ${pkg.highlight ? 'bg-white/10' : 'bg-white/10'}`} />
 
                             <ul className="space-y-4 mb-10">
                                 {pkg.features.map((feature, i) => (
                                     <li key={i} className="flex items-start gap-3 text-sm">
-                                        <Check size={18} className={`shrink-0 mt-0.5 ${pkg.highlight ? 'text-gold' : 'text-earth-600'}`} />
-                                        <span className={pkg.highlight ? 'text-white/80' : 'text-earth-800/80'}>{feature}</span>
+                                        <Check size={18} className={`shrink-0 mt-0.5 ${pkg.highlight ? 'text-gold' : 'text-gold/60'}`} />
+                                        <span className={pkg.highlight ? 'text-white/80' : 'text-white/80'}>{feature}</span>
                                     </li>
                                 ))}
                             </ul>

@@ -66,7 +66,7 @@ const ContactSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-script text-white mb-8 leading-tight"
+                        className="text-4xl sm:text-5xl md:text-7xl font-script text-white mb-8 leading-tight"
                     >
                         Let's tell your story <br /><span className="text-gold italic">together.</span>
                     </motion.h2>

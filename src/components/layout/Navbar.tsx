@@ -16,11 +16,11 @@ const Navbar = () => {
 
     return (
         <nav
-            className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-8 transition-all duration-700
-                ${scrolled
-                    ? 'opacity-100 translate-y-0 pointer-events-auto'
-                    : 'opacity-0 -translate-y-4 pointer-events-none'
-                }`}
+            className={`fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-6 transition-all duration-700
+                ${(scrolled || isOpen)
+                    ? 'translate-y-0 opacity-100'
+                    : 'translate-y-0 opacity-100 md:opacity-0 md:-translate-y-4'
+                } ${isOpen ? 'bg-earth-950' : 'bg-transparent'}`}
         >
             {/* Left side: Logo & Brand Name */}
             <div className="flex items-center gap-6">
@@ -55,12 +55,12 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Toggle */}
-            <div className="md:hidden z-50">
+            <div className={`md:hidden z-[110] transition-opacity duration-300 ${!scrolled && !isOpen ? 'opacity-100' : 'opacity-100'}`}>
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="focus:outline-none text-white"
+                    className="focus:outline-none text-white p-2"
                 >
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    {isOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
             </div>
 
@@ -68,26 +68,49 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, x: '100%' }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: '100%' }}
-                        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed inset-0 bg-earth-950 z-40 flex flex-col items-center justify-center gap-8 md:hidden"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        className="fixed inset-0 bg-earth-950 px-8 pt-24 pb-12 z-[100] flex flex-col md:hidden overflow-y-auto"
                     >
-                        {[
-                            { name: 'Our Work', href: '#portfolio' },
-                            { name: 'About Us', href: '#signature' },
-                            { name: 'Get in touch', href: '#contact' },
-                        ].map((item) => (
-                            <a
-                                key={item.name}
-                                href={item.href}
-                                onClick={() => setIsOpen(false)}
-                                className="font-serif text-3xl text-white hover:text-luxury-copper transition-colors"
-                            >
-                                {item.name}
-                            </a>
-                        ))}
+                        {/* Background Texture for Menu */}
+                        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-overlay"></div>
+
+                        <div className="flex flex-col gap-10 mt-8">
+                            {[
+                                { name: 'Our Work', href: '#portfolio' },
+                                { name: 'About Us', href: '#signature' },
+                                { name: 'Get in touch', href: '#contact' },
+                            ].map((item, idx) => (
+                                <motion.div
+                                    key={item.name}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.1 + idx * 0.1 }}
+                                >
+                                    <a
+                                        href={item.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className="font-serif text-5xl text-white hover:text-gold transition-colors inline-block"
+                                    >
+                                        {item.name}
+                                    </a>
+                                    <div className="h-[1px] w-12 bg-gold/30 mt-4" />
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Social Links & Info at the bottom */}
+                        <div className="mt-auto pt-12 flex flex-col gap-6">
+                            <div className="flex gap-8">
+                                <a href="https://www.instagram.com/weddingsbyfirstlightstudiosmnl" target="_blank" className="text-white/60 hover:text-gold transition-colors text-sm uppercase tracking-[0.2em] font-bold">Instagram</a>
+                                <a href="https://www.facebook.com/weddingsbyfirstlightstudiosmanila/" target="_blank" className="text-white/60 hover:text-gold transition-colors text-sm uppercase tracking-[0.2em] font-bold">Facebook</a>
+                            </div>
+                            <p className="text-white/20 text-[10px] uppercase tracking-[0.3em] font-sans">
+                                Weddings by First Light Studios
+                            </p>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>

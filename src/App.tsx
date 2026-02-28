@@ -10,6 +10,14 @@ import { ArrowRight, Play, X, ChevronLeft, ChevronRight, Volume2, VolumeX } from
 const galleryVideos = [
   {
     id: '1',
+    title: "Ceres & Hans",
+    location: "A First Light Studios Signature Film",
+    src: "/gallery/ceres-hans.mp4",
+    colSpan: "md:col-span-12",
+    rowSpan: "md:row-span-2",
+  },
+  {
+    id: '2',
     title: "Veronica & Chad",
     location: "Pre-wedding Film",
     src: "/gallery/vironica-chad.mp4",
@@ -17,23 +25,7 @@ const galleryVideos = [
     rowSpan: "md:row-span-2",
   },
   {
-    id: '2',
-    title: "Zarah & PJ",
-    location: "A First Light Studios Signature Film",
-    src: "/gallery/zarah-pj.mp4",
-    colSpan: "md:col-span-12",
-    rowSpan: "md:row-span-2",
-  },
-  {
     id: '3',
-    title: "Justin & Ariana",
-    location: "A First Light Studios Signature Film",
-    src: "/gallery/justin-ariana.mp4",
-    colSpan: "md:col-span-12",
-    rowSpan: "md:row-span-2",
-  },
-  {
-    id: '4',
     title: "Dianne & Phil",
     location: "A First Light Studios Signature Film",
     src: "/gallery/dianne-phil.mp4",
@@ -41,10 +33,18 @@ const galleryVideos = [
     rowSpan: "md:row-span-2",
   },
   {
-    id: '5',
-    title: "Ceres & Hans",
+    id: '4',
+    title: "Zarah & PJ",
     location: "A First Light Studios Signature Film",
-    src: "/gallery/ceres-hans.mp4",
+    src: "/gallery/zarah-pj.mp4",
+    colSpan: "md:col-span-12",
+    rowSpan: "md:row-span-2",
+  },
+  {
+    id: '5',
+    title: "Ariana & Justin",
+    location: "A First Light Studios Signature Film",
+    src: "/gallery/justin-ariana.mp4",
     colSpan: "md:col-span-12",
     rowSpan: "md:row-span-2",
   },
@@ -120,26 +120,19 @@ function GalleryCard({ video, index, onClick }: {
       {/* Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-all duration-500 group-hover:from-black/60" />
 
-      {/* Play button — shows on hover */}
-      <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${hovered ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/40 flex items-center justify-center scale-90 group-hover:scale-100 transition-transform duration-300 shadow-xl">
-          <Play size={22} className="text-white fill-white ml-1" />
-        </div>
-      </div>
-
       {/* Index watermark */}
       <div className="absolute top-5 left-6 text-white/10 font-serif text-6xl font-bold leading-none select-none pointer-events-none">
         {String(index + 1).padStart(2, '0')}
       </div>
 
       {/* Title */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 md:translate-y-2 md:group-hover:translate-y-0 transition-transform duration-500">
         <h3 className="text-white font-script text-2xl md:text-3xl leading-tight mb-1">{video.title}</h3>
         <p className="text-luxury-copper text-[10px] uppercase tracking-[0.25em] font-bold">{video.location}</p>
       </div>
 
-      {/* Copper border on hover */}
-      <div className={`absolute inset-0 pointer-events-none border-2 border-luxury-copper/60 rounded-sm transition-opacity duration-300 ${hovered ? 'opacity-100' : 'opacity-0'}`} />
+      {/* Copper border on hover - Desktop only */}
+      <div className={`absolute inset-0 pointer-events-none border-2 border-luxury-copper/60 rounded-sm transition-opacity duration-300 hidden md:block ${hovered ? 'opacity-100' : 'opacity-0'}`} />
     </motion.div>
   );
 }
@@ -308,7 +301,7 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, ease: "easeOut" }}
           >
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-script text-white leading-[1] mb-8 tracking-tight drop-shadow-2xl">
+            <h1 className="text-[12vw] sm:text-7xl md:text-8xl lg:text-9xl font-script text-white leading-[1] mb-8 tracking-tight drop-shadow-2xl px-4">
               Capturing your <br />
               <span className="font-script font-normal text-sunset-end" style={{ fontSize: '1.08em' }}>Forever Moments</span>
             </h1>
@@ -361,7 +354,7 @@ function App() {
           </div>
 
           {/* ── Gallery grid ── */}
-          <div className="grid grid-cols-1 md:grid-cols-12 auto-rows-[450px] gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 auto-rows-[350px] md:auto-rows-[450px] gap-8">
             {galleryVideos.map((video, index) => (
               <GalleryCard
                 key={video.id}
