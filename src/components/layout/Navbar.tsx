@@ -83,43 +83,50 @@ const Navbar = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed inset-0 bg-[#0c0504] z-[9990] md:hidden flex flex-col justify-center items-center text-center px-12"
+                        className="fixed inset-0 bg-[#0c0504] z-[9990] md:hidden flex flex-col overflow-y-auto"
                     >
                         {/* Background Texture for Menu */}
                         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-overlay"></div>
 
-                        <div className="flex flex-col gap-12 relative z-10 w-full">
-                            {[
-                                { name: 'Our Work', href: '#portfolio' },
-                                { name: 'About Us', href: '#signature' },
-                                { name: 'Get in touch', href: '#contact' },
-                            ].map((item, idx) => (
-                                <motion.div
-                                    key={item.name}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.1 + idx * 0.1 }}
-                                >
-                                    <a
-                                        href={item.href}
-                                        onClick={() => setIsOpen(false)}
-                                        className="font-serif text-5xl text-white hover:text-gold transition-colors inline-block"
+                        {/* Links Container */}
+                        <div className="flex flex-col px-10 pt-40 pb-20 min-h-full">
+                            <div className="flex flex-col gap-14">
+                                {[
+                                    { name: 'Our Work', href: '#portfolio' },
+                                    { name: 'About Us', href: '#signature' },
+                                    { name: 'Get in touch', href: '#contact' },
+                                ].map((item, idx) => (
+                                    <motion.div
+                                        key={item.name}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.05 + idx * 0.05 }}
                                     >
-                                        {item.name}
-                                    </a>
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        {/* Social Links & Info at the bottom */}
-                        <div className="absolute bottom-16 left-0 right-0 flex flex-col items-center gap-6 relative z-10">
-                            <div className="flex gap-10">
-                                <a href="https://www.instagram.com/weddingsbyfirstlightstudiosmnl" target="_blank" className="text-white/40 hover:text-gold transition-colors text-xs uppercase tracking-[0.3em] font-bold">Instagram</a>
-                                <a href="https://www.facebook.com/weddingsbyfirstlightstudiosmanila/" target="_blank" className="text-white/40 hover:text-gold transition-colors text-xs uppercase tracking-[0.3em] font-bold">Facebook</a>
+                                        <a
+                                            href={item.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className="font-serif text-5xl text-white hover:text-gold transition-colors block text-left"
+                                        >
+                                            {item.name}
+                                        </a>
+                                        <div className="h-[1px] w-16 bg-gold/20 mt-6" />
+                                    </motion.div>
+                                ))}
                             </div>
-                            <p className="text-white/10 text-[10px] uppercase tracking-[0.4em] font-sans">
-                                Weddings by First Light Studios
-                            </p>
+
+                            {/* Footer inside the scrollable area, pushed to bottom */}
+                            <div className="mt-auto pt-24 flex flex-col gap-8">
+                                <div className="flex gap-8">
+                                    <a href="https://www.instagram.com/weddingsbyfirstlightstudiosmnl" target="_blank" className="text-white/40 hover:text-gold transition-colors text-xs uppercase tracking-[0.3em] font-bold">Instagram</a>
+                                    <a href="https://www.facebook.com/weddingsbyfirstlightstudiosmanila/" target="_blank" className="text-white/40 hover:text-gold transition-colors text-xs uppercase tracking-[0.3em] font-bold">Facebook</a>
+                                </div>
+                                <div className="space-y-4">
+                                    <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] font-sans leading-relaxed">
+                                        First Light Studios Manila<br />
+                                        © 2024 Cinematic Masterpieces
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
                 )}
