@@ -22,9 +22,15 @@ const Navbar = () => {
                     : 'opacity-0 -translate-y-4 pointer-events-none'
                 }`}
         >
-            {/* Left side: Searchable Name instead of badge */}
-            <div className="flex items-center gap-3">
-                <span className="font-serif text-sm tracking-[0.3em] uppercase text-white font-medium">
+            {/* Left side: Logo & Brand Name */}
+            <div className="flex items-center gap-6">
+                <img
+                    src="/logo.png"
+                    alt="First Light Studios Logo"
+                    className="h-16 w-auto object-contain brightness-0 invert"
+                />
+                <div className="hidden sm:block h-10 w-px bg-white/20" />
+                <span className="hidden sm:block font-serif text-xs md:text-sm tracking-[0.4em] uppercase text-white font-medium">
                     Weddings by First Light Studios
                 </span>
             </div>

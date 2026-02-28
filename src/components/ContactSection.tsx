@@ -1,7 +1,53 @@
 import { motion } from 'framer-motion';
-import { Send, Instagram, Facebook, Mail } from 'lucide-react';
+import { Send, Instagram, Facebook, Mail, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
+    const formRef = useRef<HTMLFormElement>(null);
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+    const [statusMessage, setStatusMessage] = useState('');
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!formRef.current) return;
+
+        setStatus('sending');
+        setStatusMessage('Crafting your message...');
+
+        try {
+            // NOTE FOR THE OWNER: 
+            // 1. Create a free account at emailjs.com
+            // 2. Link your email (Gmail, etc.) under "Email Services"
+            // 3. Create a template under "Email Templates"
+            // 4. Replace placeholders below with your actual IDs:
+
+            const SERVICE_ID = 'service_o6eykr9';
+            const TEMPLATE_ID = 'template_39xh9q6';
+            const PUBLIC_KEY = 'xUIXBoU4P1VNFhibe';
+
+            const result = await emailjs.sendForm(
+                SERVICE_ID,
+                TEMPLATE_ID,
+                formRef.current,
+                PUBLIC_KEY
+            );
+
+            if (result.text === 'OK') {
+                setStatus('success');
+                setStatusMessage('Thank you! Your story has been sent to our studio. We will touch base shortly.');
+                formRef.current.reset();
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (error) {
+            console.error('EmailJS Error:', error);
+            setStatus('error');
+            setStatusMessage('Something went wrong. Please try again or email us directly.');
+        }
+    };
+
     return (
         <section id="contact" className="py-24 px-8 bg-transparent text-cream relative overflow-hidden">
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 relative z-10">
@@ -66,43 +112,73 @@ const ContactSection = () => {
                 {/* Form */}
                 <div className="w-full lg:w-1/2">
                     <motion.form
+                        ref={formRef}
+                        onSubmit={handleSubmit}
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
-                        className="bg-white/5 p-8 md:p-10 rounded-sm border border-white/10 backdrop-blur-sm"
+                        className="bg-white/5 p-8 md:p-10 rounded-sm border border-white/10 backdrop-blur-sm relative overflow-hidden"
                     >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div className="flex flex-col gap-2">
                                 <label className="text-xs uppercase tracking-widest text-gold font-bold ml-2">Name</label>
-                                <input type="text" placeholder="Your Name" className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
+                                <input name="name" type="text" placeholder="Your Name" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
                             </div>
                             <div className="flex flex-col gap-2">
                                 <label className="text-xs uppercase tracking-widest text-gold font-bold ml-2">Email</label>
-                                <input type="email" placeholder="email@address.com" className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
+                                <input name="email" type="email" placeholder="email@address.com" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div className="flex flex-col gap-2">
                                 <label className="text-xs uppercase tracking-widest text-gold font-bold ml-2">Wedding Date</label>
-                                <input type="date" className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all text-white/80" />
+                                <input name="wedding_date" type="date" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all text-white/80" />
                             </div>
                             <div className="flex flex-col gap-2">
                                 <label className="text-xs uppercase tracking-widest text-gold font-bold ml-2">Venue</label>
-                                <input type="text" placeholder="Ceremony / Reception" className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
+                                <input name="venue" type="text" placeholder="Ceremony / Reception" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
                             </div>
                         </div>
 
                         <div className="flex flex-col gap-2 mb-8">
                             <label className="text-xs uppercase tracking-widest text-gold font-bold ml-2">Message</label>
-                            <textarea rows={4} placeholder="Tell us about your dream wedding..." className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20 resize-none"></textarea>
+                            <textarea name="message" rows={4} placeholder="Tell us about your dream wedding..." required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20 resize-none"></textarea>
                         </div>
 
-                        <button className="w-full bg-gold text-earth-900 py-4 rounded-sm font-bold uppercase tracking-widest hover:bg-white hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group">
-                            Send Inquiry
-                            <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        <button
+                            disabled={status === 'sending'}
+                            className={`w-full py-4 rounded-sm font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 group
+                                ${status === 'sending'
+                                    ? 'bg-gold/50 cursor-not-allowed text-earth-900/50'
+                                    : 'bg-gold text-earth-900 hover:bg-white hover:scale-[1.02] active:scale-[0.98]'}`}
+                        >
+                            {status === 'sending' ? (
+                                <>
+                                    Sending...
+                                    <Loader2 size={18} className="animate-spin" />
+                                </>
+                            ) : (
+                                <>
+                                    Send Inquiry
+                                    <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                </>
+                            )}
                         </button>
+
+                        {/* Status Feedback */}
+                        {status !== 'idle' && status !== 'sending' && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className={`mt-6 p-4 rounded-sm flex items-center gap-3 border ${status === 'success' ? 'bg-green-500/10 border-green-500/30 text-green-400' : 'bg-red-500/10 border-red-500/30 text-red-400'
+                                    }`}
+                            >
+                                {status === 'success' ? <CheckCircle2 size={20} /> : <AlertCircle size={20} />}
+                                <p className="text-sm font-medium">{statusMessage}</p>
+                            </motion.div>
+                        )}
                     </motion.form>
                 </div>
             </div>

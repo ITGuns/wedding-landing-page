@@ -14,7 +14,7 @@ const galleryVideos = [
     location: "Pre-wedding Film",
     src: "/gallery/vironica-chad.mp4",
     colSpan: "md:col-span-12",
-    rowSpan: "",
+    rowSpan: "md:row-span-2",
   },
   {
     id: '2',
@@ -22,7 +22,7 @@ const galleryVideos = [
     location: "A First Light Studios Signature Film",
     src: "/gallery/zarah-pj.mp4",
     colSpan: "md:col-span-12",
-    rowSpan: "",
+    rowSpan: "md:row-span-2",
   },
   {
     id: '3',
@@ -30,7 +30,7 @@ const galleryVideos = [
     location: "A First Light Studios Signature Film",
     src: "/gallery/justin-ariana.mp4",
     colSpan: "md:col-span-12",
-    rowSpan: "",
+    rowSpan: "md:row-span-2",
   },
   {
     id: '4',
@@ -38,7 +38,7 @@ const galleryVideos = [
     location: "A First Light Studios Signature Film",
     src: "/gallery/dianne-phil.mp4",
     colSpan: "md:col-span-12",
-    rowSpan: "",
+    rowSpan: "md:row-span-2",
   },
   {
     id: '5',
@@ -46,7 +46,7 @@ const galleryVideos = [
     location: "A First Light Studios Signature Film",
     src: "/gallery/ceres-hans.mp4",
     colSpan: "md:col-span-12",
-    rowSpan: "",
+    rowSpan: "md:row-span-2",
   },
 ];
 
@@ -361,7 +361,7 @@ function App() {
           </div>
 
           {/* ── Gallery grid ── */}
-          <div className="grid grid-cols-1 md:grid-cols-12 auto-rows-[320px] gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-12 auto-rows-[450px] gap-8">
             {galleryVideos.map((video, index) => (
               <GalleryCard
                 key={video.id}
