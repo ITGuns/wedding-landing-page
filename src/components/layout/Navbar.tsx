@@ -11,8 +11,19 @@ const Navbar = () => {
             setScrolled(window.scrollY > 80);
         };
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+
+        // Lock body scroll when menu is open
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
 
     return (
         <nav
@@ -20,7 +31,7 @@ const Navbar = () => {
                 ${(scrolled || isOpen)
                     ? 'translate-y-0 opacity-100'
                     : 'translate-y-0 opacity-100 md:opacity-0 md:-translate-y-4'
-                } ${isOpen ? 'bg-earth-950 z-[999]' : 'bg-transparent z-50'}`}
+                } ${isOpen ? 'bg-[#0c0504] z-[9999]' : 'bg-transparent z-50'}`}
         >
             {/* Left side: Logo & Brand Name */}
             <div className="flex items-center gap-6">
@@ -71,47 +82,44 @@ const Navbar = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed inset-0 bg-earth-950 z-[998] md:hidden"
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 bg-[#0c0504] z-[9990] md:hidden flex flex-col justify-center items-center text-center px-12"
                     >
                         {/* Background Texture for Menu */}
                         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] mix-blend-overlay"></div>
 
-                        <div className="flex flex-col h-full px-8 pt-32 pb-12 overflow-y-auto">
-                            <div className="flex flex-col gap-10">
-                                {[
-                                    { name: 'Our Work', href: '#portfolio' },
-                                    { name: 'About Us', href: '#signature' },
-                                    { name: 'Get in touch', href: '#contact' },
-                                ].map((item, idx) => (
-                                    <motion.div
-                                        key={item.name}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.1 + idx * 0.1 }}
+                        <div className="flex flex-col gap-12 relative z-10 w-full">
+                            {[
+                                { name: 'Our Work', href: '#portfolio' },
+                                { name: 'About Us', href: '#signature' },
+                                { name: 'Get in touch', href: '#contact' },
+                            ].map((item, idx) => (
+                                <motion.div
+                                    key={item.name}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1 + idx * 0.1 }}
+                                >
+                                    <a
+                                        href={item.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className="font-serif text-5xl text-white hover:text-gold transition-colors inline-block"
                                     >
-                                        <a
-                                            href={item.href}
-                                            onClick={() => setIsOpen(false)}
-                                            className="font-serif text-5xl text-white hover:text-gold transition-colors inline-block"
-                                        >
-                                            {item.name}
-                                        </a>
-                                        <div className="h-[1px] w-12 bg-gold/30 mt-4" />
-                                    </motion.div>
-                                ))}
-                            </div>
+                                        {item.name}
+                                    </a>
+                                </motion.div>
+                            ))}
+                        </div>
 
-                            {/* Social Links & Info at the bottom */}
-                            <div className="mt-auto pt-16 flex flex-col gap-6">
-                                <div className="flex gap-8">
-                                    <a href="https://www.instagram.com/weddingsbyfirstlightstudiosmnl" target="_blank" className="text-white/60 hover:text-gold transition-colors text-sm uppercase tracking-[0.2em] font-bold">Instagram</a>
-                                    <a href="https://www.facebook.com/weddingsbyfirstlightstudiosmanila/" target="_blank" className="text-white/60 hover:text-gold transition-colors text-sm uppercase tracking-[0.2em] font-bold">Facebook</a>
-                                </div>
-                                <p className="text-white/20 text-[10px] uppercase tracking-[0.3em] font-sans">
-                                    Weddings by First Light Studios
-                                </p>
+                        {/* Social Links & Info at the bottom */}
+                        <div className="absolute bottom-16 left-0 right-0 flex flex-col items-center gap-6 relative z-10">
+                            <div className="flex gap-10">
+                                <a href="https://www.instagram.com/weddingsbyfirstlightstudiosmnl" target="_blank" className="text-white/40 hover:text-gold transition-colors text-xs uppercase tracking-[0.3em] font-bold">Instagram</a>
+                                <a href="https://www.facebook.com/weddingsbyfirstlightstudiosmanila/" target="_blank" className="text-white/40 hover:text-gold transition-colors text-xs uppercase tracking-[0.3em] font-bold">Facebook</a>
                             </div>
+                            <p className="text-white/10 text-[10px] uppercase tracking-[0.4em] font-sans">
+                                Weddings by First Light Studios
+                            </p>
                         </div>
                     </motion.div>
                 )}
