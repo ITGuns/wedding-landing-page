@@ -24,7 +24,7 @@ const Navbar = () => {
                     <img
                         src="/logo.png"
                         alt="First Light Studios Logo"
-                        className="h-12 w-auto object-contain brightness-0 invert"
+                        className="h-20 w-auto object-contain"
                     />
                     <div className="hidden sm:block h-8 w-px bg-white/20" />
                     <span className="hidden sm:block font-serif text-xs md:text-sm tracking-[0.4em] uppercase text-white font-medium">
