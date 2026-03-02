@@ -35,13 +35,12 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-12 font-sans text-[10px] font-bold tracking-[0.4em] uppercase text-white/90">
                     {[
                         { name: 'Our Work', href: '#portfolio' },
-                        { name: 'Services', href: '#services' },
                         { name: 'About Us', href: '#signature' },
                         { name: 'Get in touch', href: '#contact' },
                     ].map((item, idx) => (
                         <div key={item.name} className="flex items-center gap-6">
                             <a href={item.href} className="hover:text-gold transition-colors duration-300">{item.name}</a>
-                            {idx < 3 && <span className="text-white/20 font-light">|</span>}
+                            {idx < 2 && <span className="text-white/20 font-light">|</span>}
                         </div>
                     ))}
                 </div>
@@ -70,7 +69,6 @@ const Navbar = () => {
                         <div className="flex flex-col px-4 pt-6 pb-8">
                             {[
                                 { name: 'Our Work', href: '#portfolio' },
-                                { name: 'Services', href: '#services' },
                                 { name: 'About Us', href: '#signature' },
                                 { name: 'Get in touch', href: '#contact' },
                             ].map((item, idx) => (
@@ -87,7 +85,7 @@ const Navbar = () => {
                                     >
                                         {item.name}
                                     </a>
-                                    {idx < 3 && <div className="h-[1px] w-full bg-white/5" />}
+                                    {idx < 2 && <div className="h-[1px] w-full bg-white/5" />}
                                 </motion.div>
                             ))}
 
