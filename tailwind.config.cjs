@@ -34,6 +34,10 @@ module.exports = {
                 'script': ['"Pinyon Script"', 'cursive'],
                 'sans': ['Inter', 'sans-serif'],
                 'serif': ['Spectral', 'serif'],
+                'display': ['"Playfair Display"', 'serif'],
+                'mag': ['Italiana', 'serif'],
+                'lorestta': ['Lorestta', 'serif'],
+                'swash': ['Lorestta', 'serif'],
             },
             animation: {
                 'float': 'float 7s ease-in-out infinite',

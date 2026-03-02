@@ -66,9 +66,9 @@ const ContactSection = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl sm:text-5xl md:text-7xl font-script text-white mb-8 leading-tight"
+                        className="text-4xl sm:text-5xl md:text-7xl font-sans text-white mb-8 leading-tight tracking-tight"
                     >
-                        Let's tell your story <br /><span className="text-gold italic">together.</span>
+                        Let's tell your story <br /><span className="text-luxury-copper font-swash lowercase text-6xl md:text-8xl inline-block -mt-4">together.</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -82,26 +82,26 @@ const ContactSection = () => {
                     </motion.p>
 
                     <div className="flex flex-col gap-6 text-white/60">
-                        <a href="mailto:firstlightstudiosmanila@gmail.com" className="flex items-center gap-4 hover:text-gold transition-colors group cursor-pointer">
-                            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-gold/50 transition-colors">
+                        <a href="mailto:firstlightstudiosmanila@gmail.com" className="flex items-center gap-4 hover:text-luxury-copper transition-colors group cursor-pointer">
+                            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-luxury-copper/50 transition-colors">
                                 <Mail size={20} />
                             </div>
                             <span className="text-lg">firstlightstudiosmanila@gmail.com</span>
                         </a>
-                        <a href="https://www.instagram.com/weddingsbyfirstlightstudiosmnl" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-gold transition-colors group cursor-pointer">
-                            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-gold/50 transition-colors">
+                        <a href="https://www.instagram.com/weddingsbyfirstlightstudiosmnl" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-luxury-copper transition-colors group cursor-pointer">
+                            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-luxury-copper/50 transition-colors">
                                 <Instagram size={20} />
                             </div>
                             <span className="text-lg">@weddingsbyfirstlightstudiosmnl</span>
                         </a>
-                        <a href="https://www.facebook.com/weddingsbyfirstlightstudiosmanila/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-gold transition-colors group cursor-pointer">
-                            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-gold/50 transition-colors">
+                        <a href="https://www.facebook.com/weddingsbyfirstlightstudiosmanila/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 hover:text-luxury-copper transition-colors group cursor-pointer">
+                            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-luxury-copper/50 transition-colors">
                                 <Facebook size={20} />
                             </div>
                             <span className="text-lg">Weddings by First Light Studios</span>
                         </a>
-                        <div className="flex items-center gap-4 hover:text-gold transition-colors group cursor-pointer">
-                            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-gold/50 transition-colors">
+                        <div className="flex items-center gap-4 hover:text-luxury-copper transition-colors group cursor-pointer">
+                            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-luxury-copper/50 transition-colors">
                                 <Send size={20} className="rotate-45" />
                             </div>
                             <span className="text-lg">+639175771313</span>
@@ -122,37 +122,37 @@ const ContactSection = () => {
                     >
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div className="flex flex-col gap-2">
-                                <label className="text-xs uppercase tracking-widest text-gold font-bold ml-2">Name</label>
-                                <input name="name" type="text" placeholder="Your Name" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
+                                <label className="text-xs uppercase tracking-widest text-luxury-copper font-bold ml-2">Name</label>
+                                <input name="name" type="text" placeholder="Your Name" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-luxury-copper focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
                             </div>
                             <div className="flex flex-col gap-2">
-                                <label className="text-xs uppercase tracking-widest text-gold font-bold ml-2">Email</label>
-                                <input name="email" type="email" placeholder="email@address.com" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
+                                <label className="text-xs uppercase tracking-widest text-luxury-copper font-bold ml-2">Email</label>
+                                <input name="email" type="email" placeholder="email@address.com" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-luxury-copper focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div className="flex flex-col gap-2">
-                                <label className="text-xs uppercase tracking-widest text-gold font-bold ml-2">Wedding Date</label>
-                                <input name="wedding_date" type="date" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all text-white/80" />
+                                <label className="text-xs uppercase tracking-widest text-luxury-copper font-bold ml-2">Wedding Date</label>
+                                <input name="wedding_date" type="date" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-luxury-copper focus:bg-earth-950/50 transition-all text-white/80" />
                             </div>
                             <div className="flex flex-col gap-2">
-                                <label className="text-xs uppercase tracking-widest text-gold font-bold ml-2">Venue</label>
-                                <input name="venue" type="text" placeholder="Ceremony / Reception" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
+                                <label className="text-xs uppercase tracking-widest text-luxury-copper font-bold ml-2">Venue</label>
+                                <input name="venue" type="text" placeholder="Ceremony / Reception" required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-luxury-copper focus:bg-earth-950/50 transition-all placeholder:text-white/20" />
                             </div>
                         </div>
 
                         <div className="flex flex-col gap-2 mb-8">
-                            <label className="text-xs uppercase tracking-widest text-gold font-bold ml-2">Message</label>
-                            <textarea name="message" rows={4} placeholder="Tell us about your dream wedding..." required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-gold focus:bg-earth-950/50 transition-all placeholder:text-white/20 resize-none"></textarea>
+                            <label className="text-xs uppercase tracking-widest text-luxury-copper font-bold ml-2">Message</label>
+                            <textarea name="message" rows={4} placeholder="Tell us about your dream wedding..." required className="bg-earth-950/30 border border-white/10 p-4 rounded-sm text-white focus:outline-none focus:border-luxury-copper focus:bg-earth-950/50 transition-all placeholder:text-white/20 resize-none"></textarea>
                         </div>
 
                         <button
                             disabled={status === 'sending'}
                             className={`w-full py-4 rounded-sm font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 group
                                 ${status === 'sending'
-                                    ? 'bg-gold/50 cursor-not-allowed text-earth-900/50'
-                                    : 'bg-gold text-earth-900 hover:bg-white hover:scale-[1.02] active:scale-[0.98]'}`}
+                                    ? 'bg-luxury-copper/50 cursor-not-allowed text-earth-950'
+                                    : 'bg-luxury-copper text-earth-950 hover:bg-white hover:scale-[1.02] active:scale-[0.98]'}`}
                         >
                             {status === 'sending' ? (
                                 <>

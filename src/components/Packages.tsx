@@ -13,7 +13,7 @@ const packages = [
             "10-12 Hours of Wedding Day Coverage",
             "Same-Day Edit (SDE) Photo Slideshow (3-5 mins)",
             "Drone Coverage (if applicable)",
-            "Creative Consultation & Planning",
+            "Creative Consultation and Planning",
             "1 Revision Allowed"
         ],
         highlight: false
@@ -28,7 +28,7 @@ const packages = [
             "10-12 Hours of Wedding Day Coverage",
             "Same-Day Edit (SDE) Wedding Film (3-5 mins)",
             "Drone Coverage (if applicable)",
-            "Creative Consultation & Planning",
+            "Creative Consultation and Planning",
             "1 Revision Allowed"
         ],
         highlight: true
@@ -39,9 +39,9 @@ const packages = [
         subtitle: "The Complete Experience",
         description: "The pinnacle of wedding filmmaking. A boundless creative journey where stills and film unite.",
         features: [
-            "Premiere Creative Direction & Concept",
+            "Premiere Creative Direction and Concept",
             "Pre-Nup Shoot (4-6 Hours)",
-            "Complete Photo & Video Coverage",
+            "Complete Photo and Video Coverage",
             "Large Wedding Crew (Director, 3 Videographers, 2 Photographers, 2 Editors)",
             "Extended SDE Wedding Film (6-8 mins)",
             "100-150 Enhanced Photos",

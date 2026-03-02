@@ -15,16 +15,15 @@ const Navbar = () => {
     return (
         <>
             {/* ── Top bar: Logo + hamburger ── */}
-            <div className={`fixed top-0 left-0 w-full z-[200] flex items-center justify-between px-6 py-5 transition-all duration-500
-                bg-transparent
+            <div className={`fixed top-0 left-0 w-full z-[200] flex items-center justify-between px-4 py-3 md:px-10 md:py-6 transition-all duration-500 bg-transparent
                 ${!scrolled && !isOpen ? 'md:opacity-0 md:-translate-y-4' : 'md:opacity-100 md:translate-y-0'}
             `}>
-                {/* Logo */}
+                {/* Logo & Brand Text */}
                 <div className="flex items-center gap-4">
                     <img
                         src="/logo.png"
                         alt="First Light Studios Logo"
-                        className="h-20 w-auto object-contain"
+                        className="h-14 w-auto md:h-20 object-contain"
                     />
                     <div className="hidden sm:block h-8 w-px bg-white/20" />
                     <span className="hidden sm:block font-serif text-xs md:text-sm tracking-[0.4em] uppercase text-white font-medium">
@@ -36,12 +35,13 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-12 font-sans text-[10px] font-bold tracking-[0.4em] uppercase text-white/90">
                     {[
                         { name: 'Our Work', href: '#portfolio' },
+                        { name: 'Services', href: '#services' },
                         { name: 'About Us', href: '#signature' },
                         { name: 'Get in touch', href: '#contact' },
                     ].map((item, idx) => (
                         <div key={item.name} className="flex items-center gap-6">
                             <a href={item.href} className="hover:text-gold transition-colors duration-300">{item.name}</a>
-                            {idx < 2 && <span className="text-white/20 font-light">|</span>}
+                            {idx < 3 && <span className="text-white/20 font-light">|</span>}
                         </div>
                     ))}
                 </div>
@@ -64,12 +64,13 @@ const Navbar = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2, ease: 'easeOut' }}
-                        className="fixed top-[72px] left-0 w-full z-[190] md:hidden bg-transparent"
+                        className="fixed top-[72px] left-0 w-full z-[190] md:hidden bg-[#1a0a05]/95 backdrop-blur-md"
                     >
                         {/* Links */}
-                        <div className="flex flex-col px-8 pt-6 pb-8">
+                        <div className="flex flex-col px-4 pt-6 pb-8">
                             {[
                                 { name: 'Our Work', href: '#portfolio' },
+                                { name: 'Services', href: '#services' },
                                 { name: 'About Us', href: '#signature' },
                                 { name: 'Get in touch', href: '#contact' },
                             ].map((item, idx) => (
@@ -86,7 +87,7 @@ const Navbar = () => {
                                     >
                                         {item.name}
                                     </a>
-                                    {idx < 2 && <div className="h-[1px] w-full bg-white/5" />}
+                                    {idx < 3 && <div className="h-[1px] w-full bg-white/5" />}
                                 </motion.div>
                             ))}
 

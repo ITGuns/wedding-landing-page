@@ -2,6 +2,7 @@
 import Navbar from './components/layout/Navbar';
 import ContactSection from './components/ContactSection';
 import SignatureSection from './components/SignatureSection';
+import ServicesSection from './components/ServicesSection';
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, X, ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react';
@@ -10,7 +11,7 @@ import { ArrowRight, X, ChevronLeft, ChevronRight, Volume2, VolumeX } from 'luci
 const galleryVideos = [
   {
     id: '1',
-    title: "Ceres & Hans",
+    title: "Ceres and Hans",
     location: "A First Light Studios Signature Film",
     src: "/gallery/ceres-hans.mp4",
     colSpan: "md:col-span-12",
@@ -18,7 +19,7 @@ const galleryVideos = [
   },
   {
     id: '2',
-    title: "Veronica & Chad",
+    title: "Veronica and Chad",
     location: "Pre-wedding Film",
     src: "/gallery/vironica-chad.mp4",
     colSpan: "md:col-span-12",
@@ -26,7 +27,7 @@ const galleryVideos = [
   },
   {
     id: '3',
-    title: "Dianne & Phil",
+    title: "Dianne and Phil",
     location: "A First Light Studios Signature Film",
     src: "/gallery/dianne-phil.mp4",
     colSpan: "md:col-span-12",
@@ -34,7 +35,7 @@ const galleryVideos = [
   },
   {
     id: '4',
-    title: "Zarah & PJ",
+    title: "Zarah and PJ",
     location: "A First Light Studios Signature Film",
     src: "/gallery/zarah-pj.mp4",
     colSpan: "md:col-span-12",
@@ -42,7 +43,7 @@ const galleryVideos = [
   },
   {
     id: '5',
-    title: "Ariana & Justin",
+    title: "Ariana and Justin",
     location: "A First Light Studios Signature Film",
     src: "/gallery/justin-ariana.mp4",
     colSpan: "md:col-span-12",
@@ -127,7 +128,7 @@ function GalleryCard({ video, index, onClick }: {
 
       {/* Title */}
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 md:translate-y-2 md:group-hover:translate-y-0 transition-transform duration-500">
-        <h3 className="text-white font-script text-2xl md:text-3xl leading-tight mb-1">{video.title}</h3>
+        <h3 className="text-white font-lorestta italic text-3xl md:text-4xl tracking-wide mb-2">{video.title}</h3>
         <p className="text-luxury-copper text-[10px] uppercase tracking-[0.25em] font-bold">{video.location}</p>
       </div>
 
@@ -177,7 +178,7 @@ function LightboxPlayer({ index, onClose, onPrev, onNext }: {
       {/* Top bar */}
       <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-6 md:px-10 py-5 bg-gradient-to-b from-black/80 to-transparent">
         <div>
-          <h3 className="text-white font-script text-2xl md:text-3xl leading-none mb-1">{video.title}</h3>
+          <h3 className="text-white font-lorestta italic text-3xl md:text-4xl tracking-wide mb-1">{video.title}</h3>
           <p className="text-luxury-copper text-xs uppercase tracking-widest">{video.location}</p>
         </div>
         <div className="flex items-center gap-3">
@@ -301,12 +302,12 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.4, ease: "easeOut" }}
           >
-            <h1 className="text-[12vw] sm:text-7xl md:text-8xl lg:text-9xl font-script text-white leading-[1] mb-8 tracking-tight drop-shadow-2xl px-4">
-              Capturing your <br />
-              <span className="font-script font-normal text-sunset-end" style={{ fontSize: '1.08em' }}>Forever Moments</span>
+            <h1 className="text-[12vw] sm:text-7xl md:text-8xl lg:text-9xl font-swash text-white leading-[1.1] mb-8 tracking-tight drop-shadow-2xl px-4">
+              The Art of <br />
+              <span className="text-luxury-copper" style={{ fontSize: '1.1em' }}>Remembering</span>
             </h1>
-            <p className="text-white/60 text-base md:text-lg font-light tracking-widest uppercase mb-10 font-sans">
-              Weddings by First Light Studios Manila
+            <p className="text-white/80 text-base md:text-lg font-light tracking-[0.2em] italic mb-10 font-serif">
+              Cinematic Storytelling, Illuminated in First Light
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <motion.a
@@ -334,11 +335,8 @@ function App() {
       </section>
 
       {/* ── PORTFOLIO + GALLERY (merged) ── */}
-      <section id="portfolio" className="relative py-32 px-4 md:px-12 bg-transparent">
-
-
-        <div className="max-w-[1400px] mx-auto relative z-10">
-
+      <section id="portfolio" className="relative py-32 bg-transparent">
+        <div className="w-full relative z-10 px-0">
           {/* Section badge — enlarged as requested */}
           <div className="text-center mb-20">
             <motion.div
@@ -354,7 +352,7 @@ function App() {
           </div>
 
           {/* ── Gallery grid ── */}
-          <div className="grid grid-cols-1 md:grid-cols-12 auto-rows-[350px] md:auto-rows-[450px] gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 auto-rows-[450px] md:auto-rows-[70vh] gap-4">
             {galleryVideos.map((video, index) => (
               <GalleryCard
                 key={video.id}
@@ -364,13 +362,28 @@ function App() {
               />
             ))}
           </div>
-
         </div>
       </section>
 
 
-      {/* ── FLS SIGNATURE ── */}
-      <SignatureSection />
+      {/* ── SHARED STORY SECTION (Services + About Us) ── */}
+      <section id="our-story" className="relative overflow-hidden">
+        {/* Continuous Background Shared by both */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/gallery/about-bg.png"
+            alt="Shared Story Background"
+            className="w-full h-full object-cover"
+          />
+          {/* Consistent dark overlay for text readability across both sections */}
+          <div className="absolute inset-0 bg-black/60 md:bg-black/40" />
+        </div>
+
+        <div className="relative z-10">
+          <ServicesSection />
+          <SignatureSection />
+        </div>
+      </section>
 
       {/* ── CONTACT ── */}
       <ContactSection />
