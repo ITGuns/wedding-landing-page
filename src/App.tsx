@@ -19,7 +19,7 @@ const galleryVideos = [
   },
   {
     id: '2',
-    title: "Veronica and Chad",
+    title: "Vironica and Chad",
     location: "Pre-wedding Film",
     src: "/gallery/vironica-chad.mp4",
     colSpan: "md:col-span-12",
@@ -245,13 +245,11 @@ function LightboxPlayer({ index, onClose, onPrev, onNext }: {
 
 // ── Main App ────────────────────────────────────────────────────────
 function App() {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [currentVideoIndex] = useState(0);
   const [activeVideoIndex, setActiveVideoIndex] = useState<number | null>(null);
 
   const heroVideos = [
     "/videos/hero-1.mp4",
-    "/videos/hero-2.mp4",
-    "/videos/hero-3.mp4"
   ];
 
   const openVideo = (i: number) => setActiveVideoIndex(i);
@@ -286,10 +284,9 @@ function App() {
           <video
             key={currentVideoIndex}
             autoPlay
-            loop={false}
+            loop
             muted
             playsInline
-            onEnded={() => setCurrentVideoIndex((prev) => (prev + 1) % heroVideos.length)}
             className="w-full h-full object-cover opacity-80 transition-opacity duration-1000"
           >
             <source src={heroVideos[currentVideoIndex]} type="video/mp4" />
@@ -366,21 +363,29 @@ function App() {
       </section>
 
 
-      {/* ── SHARED STORY SECTION (Services + About Us) ── */}
-      <section id="our-story" className="relative overflow-hidden">
-        {/* Continuous Background Shared by both */}
+      {/* ── SERVICES SECTION ── */}
+      <section id="services-wrapper" className="relative z-10 bg-transparent">
+        <ServicesSection />
+      </section>
+
+      {/* ── ABOUT US SECTION ── */}
+      <section id="about-wrapper" className="relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            src="/gallery/about-bg.png"
-            alt="Shared Story Background"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
-          />
-          {/* Consistent dark overlay for text readability across both sections */}
+          >
+            <source src="/videos/ceres-hans-bali-wedding.mp4" type="video/mp4" />
+          </video>
+          {/* Overlay to ensure text readability */}
           <div className="absolute inset-0 bg-black/60 md:bg-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-earth-900 via-transparent to-earth-900" />
         </div>
 
         <div className="relative z-10">
-          <ServicesSection />
           <SignatureSection />
         </div>
       </section>

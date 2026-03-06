@@ -35,12 +35,13 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-12 font-sans text-[10px] font-bold tracking-[0.4em] uppercase text-white/90">
                     {[
                         { name: 'Our Work', href: '#portfolio' },
+                        { name: 'Our Services', href: '#services' },
                         { name: 'About Us', href: '#signature' },
                         { name: 'Get in touch', href: '#contact' },
-                    ].map((item, idx) => (
+                    ].map((item, idx, arr) => (
                         <div key={item.name} className="flex items-center gap-6">
                             <a href={item.href} className="hover:text-gold transition-colors duration-300">{item.name}</a>
-                            {idx < 2 && <span className="text-white/20 font-light">|</span>}
+                            {idx < arr.length - 1 && <span className="text-white/20 font-light">|</span>}
                         </div>
                     ))}
                 </div>
@@ -69,9 +70,10 @@ const Navbar = () => {
                         <div className="flex flex-col px-4 pt-6 pb-8">
                             {[
                                 { name: 'Our Work', href: '#portfolio' },
+                                { name: 'Our Services', href: '#services' },
                                 { name: 'About Us', href: '#signature' },
                                 { name: 'Get in touch', href: '#contact' },
-                            ].map((item, idx) => (
+                            ].map((item, idx, arr) => (
                                 <motion.div
                                     key={item.name}
                                     initial={{ opacity: 0, x: -16 }}
@@ -85,7 +87,7 @@ const Navbar = () => {
                                     >
                                         {item.name}
                                     </a>
-                                    {idx < 2 && <div className="h-[1px] w-full bg-white/5" />}
+                                    {idx < arr.length - 1 && <div className="h-[1px] w-full bg-white/5" />}
                                 </motion.div>
                             ))}
 
